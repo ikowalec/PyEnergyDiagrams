@@ -26,7 +26,10 @@ class ED:
         self.space = 'auto'
         self.offset = 'auto'
         self.offset_ratio = 0.02
-        self.color_bottom_text = 'blue'
+        self.color_text = {'t': 'k',
+                           'b': 'blue',
+                           'l': 'blue',
+                           'r': 'blue'}
         self.aspect = aspect
         self.round_energies_at_digit = "keep all digits"
         # data
@@ -262,28 +265,29 @@ class ED:
                     level[0]+self.offset,  # Y
                     level[3],  # self.top_texts
                     horizontalalignment='center',
-                    verticalalignment='bottom')
+                    verticalalignment='bottom',
+                    color=self.color_text['b'])
 
             self.ax.text(start + self.dimension,  # X
                     level[0],  # Y
-                    level[5],  # self.bottom_text
+                    level[5],  # self.left_text
                     horizontalalignment='left',
                     verticalalignment='center',
-                    color=self.color_bottom_text)
+                    color=self.color_text['l'])
 
             self.ax.text(start,  # X
                     level[0],  # Y
-                    level[6],  # self.bottom_text
+                    level[6],  # self.right_text
                     horizontalalignment='right',
                     verticalalignment='center',
-                    color=self.color_bottom_text)
+                    color=self.color_text['r'])
 
             self.ax.text(start + self.dimension/2.,  # X
                     level[0] - self.offset*2,  # Y
                     level[2],  # self.bottom_text
                     horizontalalignment='center',
                     verticalalignment='top',
-                    color=self.color_bottom_text)
+                    color=self.color_text['t'])
         if show_IDs:
             # for showing the ID allowing the user to identify the level
             for ind, level in enumerate(data):
